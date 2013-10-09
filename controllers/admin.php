@@ -1,6 +1,7 @@
 <?php
 
 use Pyro\Module\Search\Model\Search;
+
 /**
  * Admin controller for the search module
  *
@@ -15,8 +16,6 @@ class Admin extends Admin_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->load->model('search_index_m');
 	}
 
 	/**
@@ -26,7 +25,7 @@ class Admin extends Admin_Controller
 	{
 		$query = $this->input->get('term');
 
-		$results = Search::search(8);
+		$results = Search::search($query, 8);
 
 		// Remember which modules have been loaded
 		static $modules = array();
